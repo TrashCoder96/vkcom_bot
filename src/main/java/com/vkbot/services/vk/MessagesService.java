@@ -11,8 +11,9 @@ import retrofit2.http.Query;
 public interface MessagesService {
 
     @GET("messages.send")
-    Call<Response> sendMessage(@Query("access_token") String access_token, @Query("user_id") String user_id, @Query("user_ids") String user_ids, @Query("message") String message);
-
-
+    Call<Response> sendMessage(@Query("access_token") String access_token,
+                               @Query("user_id") String user_id,
+                               @Query("user_ids") String user_ids,
+                               @Query("message") String message);
 
 }

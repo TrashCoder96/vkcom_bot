@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
-import java.util.List;
 
 /**
  * Created by ivan on 15.03.17.
@@ -23,14 +22,6 @@ public class VkComponent {
 
     public void sendMessage(String message, String id) throws IOException {
         messagesService.sendMessage(token, id, null, message).execute();
-    }
-
-    public void sendMessageToUsers(String message, List<String> ids) {
-        String user_ids = "";
-        for (String id: ids) {
-            user_ids += id;
-        }
-        messagesService.sendMessage(token, null, user_ids, message);
     }
 
 }

@@ -1,6 +1,5 @@
 package com.vkbot;
 
-import com.vkbot.config.QuartzConfig;
 import com.vkbot.config.WebConfig;
 import com.vkbot.rest.CallbackController;
 import com.vkbot.services.VkComponent;
@@ -15,7 +14,7 @@ import javax.annotation.PostConstruct;
 import java.io.IOException;
 
 @SpringBootApplication
-@ComponentScan(basePackageClasses = { WebConfig.class, QuartzConfig.class, CallbackController.class })
+@ComponentScan(basePackageClasses = { WebConfig.class, CallbackController.class })
 public class VkbotApplication extends SpringBootServletInitializer {
 
 	@Override

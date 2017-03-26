@@ -3,6 +3,7 @@ package com.vkbot.rest;
 import com.vkbot.rest.ro.ConfirmationRo;
 import com.vkbot.services.VkComponent;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,13 +18,20 @@ import java.io.IOException;
 @RestController
 public class CallbackController {
 
+    @Value("${vk.key}")
+    private String key;
+
     @Autowired
     private VkComponent vkComponent;
 
     @RequestMapping(value = "/call", method = RequestMethod.POST)
     public String call(@RequestBody ConfirmationRo request) throws IOException {
-        vkComponent.sendMessage(request.getObject().getBody(), request.getObject().getUser_id());
-        return "c28219b6";
+        try {
+            vkComponent.sendMessage(request.getObject().getBody(), request.getObject().getUser_id());
+        } catch (Exception e) {
+            return key;
+        }
+        return key;
     }
 
 }
